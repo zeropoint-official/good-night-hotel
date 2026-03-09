@@ -384,7 +384,7 @@ export default function ProposalPage() {
                   >
                     <strong>Launch Google Ads</strong> — initial Search campaign
                     targeting hotel-related keywords for Arques, Saint-Omer, and
-                    the A26 corridor (recommended starting budget: €225/month)
+                    the A26 corridor (recommended starting budget: €250/month)
                   </Bullet>
                   <Bullet
                     icon={<CheckCircle2 className="w-4 h-4 text-neutral-300" />}
@@ -419,14 +419,14 @@ export default function ProposalPage() {
                     <strong>Scale Google Ads:</strong> Add Google Maps /
                     Local campaign alongside the existing Search campaign.
                     Review Month 1 data, adjust keywords and bids (recommended
-                    budget increase to €300–450/month across both campaigns)
+                    budget increase to €300–400/month across both campaigns)
                   </Bullet>
                   <Bullet
                     icon={<CheckCircle2 className="w-4 h-4 text-neutral-300" />}
                   >
                     <strong>Explore Meta Ads:</strong> If budget allows, test a
                     Facebook/Instagram awareness campaign targeting travellers
-                    in the region (€75–150/month)
+                    in the region (€100–150/month)
                   </Bullet>
                   <Bullet
                     icon={<CheckCircle2 className="w-4 h-4 text-neutral-300" />}
@@ -556,7 +556,7 @@ export default function ProposalPage() {
                     Google Search Ads
                   </td>
                   <td className="px-5 py-3 text-neutral-600">
-                    €225/month
+                    €250/month
                   </td>
                 </tr>
                 <tr>
@@ -571,10 +571,10 @@ export default function ProposalPage() {
                     </span>
                   </td>
                   <td className="px-5 py-3 text-neutral-600">
-                    €300–450/month
+                    €300–400/month
                     <br />
                     <span className="text-neutral-400">
-                      + €75–150 Meta (optional)
+                      + €100–150 Meta (optional)
                     </span>
                   </td>
                 </tr>
@@ -586,10 +586,10 @@ export default function ProposalPage() {
                     Best-performing channels + Retargeting
                   </td>
                   <td className="px-5 py-3 text-neutral-600">
-                    €300–600/month
+                    €400–500/month
                     <br />
                     <span className="text-neutral-400">
-                      (allocated based on ROI data)
+                      (scaled only if results justify it)
                     </span>
                   </td>
                 </tr>
@@ -601,9 +601,10 @@ export default function ProposalPage() {
             <strong>How it works:</strong> We handle all campaign setup,
             keyword research, ad copywriting, bid management, and ongoing
             optimisation. You are billed directly by Google/Meta for the ad
-            spend. We report on performance monthly and adjust the strategy
-            based on what is delivering the best return. The budgets above are
-            recommendations — we can start lower and scale based on results.
+            spend. We report on performance monthly and consult with your team
+            before making any budget changes. Increases only happen when the
+            data shows a clear return — nothing is scaled without your
+            approval.
           </div>
         </motion.section>
 
@@ -746,9 +747,10 @@ export default function ProposalPage() {
               <div className="mt-4 p-3 bg-neutral-50 rounded text-xs text-neutral-500 leading-relaxed">
                 <strong>Note:</strong> Advertising spend (Google Ads &amp; Meta
                 Ads budget) is billed separately and directly by the platforms.
-                We recommend a starting budget of €225/month in Month 1, scaling
-                to €300–600/month by Month 3 based on performance. The exact
-                budget is flexible and decided together.
+                We recommend a starting budget of €250/month in Month 1, scaling
+                to €400–500/month by Month 3. Budget increases only happen if
+                we see real results — we consult with your team to decide the
+                best option at each stage.
               </div>
             </div>
           </div>
