@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -90,6 +91,105 @@ const NEARBY = [
   },
 ];
 
+function BookingWidget() {
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const fmt = (d: Date) => d.toISOString().split("T")[0];
+
+  const [checkIn, setCheckIn] = useState(fmt(today));
+  const [checkOut, setCheckOut] = useState(fmt(tomorrow));
+  const [guests, setGuests] = useState(2);
+  const [submitted, setSubmitted] = useState(false);
+
+  return (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={fade}
+      custom={4}
+      className="relative z-10 px-3 md:px-6 pb-10 md:pb-20"
+    >
+      <div className="bg-white/80 md:bg-white/90 backdrop-blur-xl rounded-2xl p-3 md:p-5 max-w-2xl mx-auto shadow-xl shadow-black/10 border border-white/20">
+        {submitted ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-4 md:py-6"
+          >
+            <p className="text-[#1a1a1a] font-medium text-sm md:text-base">
+              This is a preview — booking is not active yet.
+            </p>
+            <p className="text-[#1a1a1a]/40 text-xs mt-1">
+              {checkIn} → {checkOut} · {guests}{" "}
+              {guests === 1 ? "guest" : "guests"}
+            </p>
+            <button
+              onClick={() => setSubmitted(false)}
+              className="mt-3 text-xs text-[#1a1a1a]/50 underline underline-offset-2"
+            >
+              Try again
+            </button>
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+            <div className="bg-black/[0.03] rounded-xl p-2.5 md:p-3.5 text-left">
+              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-0.5 md:mb-1">
+                Check-in
+              </label>
+              <input
+                type="date"
+                value={checkIn}
+                onChange={(e) => setCheckIn(e.target.value)}
+                className="w-full bg-transparent text-[#1a1a1a]/80 text-xs md:text-sm outline-none cursor-pointer"
+              />
+            </div>
+            <div className="bg-black/[0.03] rounded-xl p-2.5 md:p-3.5 text-left">
+              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-0.5 md:mb-1">
+                Check-out
+              </label>
+              <input
+                type="date"
+                value={checkOut}
+                onChange={(e) => setCheckOut(e.target.value)}
+                className="w-full bg-transparent text-[#1a1a1a]/80 text-xs md:text-sm outline-none cursor-pointer"
+              />
+            </div>
+            <div className="bg-black/[0.03] rounded-xl p-2.5 md:p-3.5 text-left">
+              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-0.5 md:mb-1">
+                Guests
+              </label>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setGuests(Math.max(1, guests - 1))}
+                  className="w-6 h-6 rounded-full bg-black/[0.06] text-[#1a1a1a]/60 text-xs flex items-center justify-center hover:bg-black/10 transition-colors"
+                >
+                  −
+                </button>
+                <span className="text-[#1a1a1a]/80 text-xs md:text-sm min-w-[1rem] text-center">
+                  {guests}
+                </span>
+                <button
+                  onClick={() => setGuests(Math.min(6, guests + 1))}
+                  className="w-6 h-6 rounded-full bg-black/[0.06] text-[#1a1a1a]/60 text-xs flex items-center justify-center hover:bg-black/10 transition-colors"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <button
+              onClick={() => setSubmitted(true)}
+              className="bg-[#1a1a1a] text-white font-medium rounded-xl px-4 py-3 md:py-3.5 text-xs md:text-sm hover:bg-[#333] transition-colors col-span-2 md:col-span-1"
+            >
+              Book Now
+            </button>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
 export default function PreviewPage() {
   return (
     <main className="min-h-screen bg-[#FAFAF8] text-[#1a1a1a]">
@@ -165,49 +265,7 @@ export default function PreviewPage() {
         </motion.div>
 
         {/* Booking Widget — pinned to bottom of hero */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fade}
-          custom={4}
-          className="relative z-10 px-4 md:px-6 pb-16 md:pb-20"
-        >
-          <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-4 md:p-5 max-w-2xl mx-auto shadow-xl shadow-black/10">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-              <div className="bg-[#f5f5f3] rounded-xl p-3.5 text-left">
-                <label className="text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-1">
-                  Check-in
-                </label>
-                <div className="flex items-center gap-2 text-sm">
-                  <CalendarDays className="w-4 h-4 text-[#1a1a1a]/30" />
-                  <span className="text-[#1a1a1a]/70">Select date</span>
-                </div>
-              </div>
-              <div className="bg-[#f5f5f3] rounded-xl p-3.5 text-left">
-                <label className="text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-1">
-                  Check-out
-                </label>
-                <div className="flex items-center gap-2 text-sm">
-                  <CalendarDays className="w-4 h-4 text-[#1a1a1a]/30" />
-                  <span className="text-[#1a1a1a]/70">Select date</span>
-                </div>
-              </div>
-              <div className="bg-[#f5f5f3] rounded-xl p-3.5 text-left">
-                <label className="text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-1">
-                  Guests
-                </label>
-                <div className="flex items-center gap-2 text-sm">
-                  <Users className="w-4 h-4 text-[#1a1a1a]/30" />
-                  <span className="text-[#1a1a1a]/70">2 Adults</span>
-                  <ChevronDown className="w-3 h-3 text-[#1a1a1a]/20 ml-auto" />
-                </div>
-              </div>
-              <button className="bg-[#1a1a1a] text-white font-medium rounded-xl px-6 py-3.5 text-sm hover:bg-[#333] transition-colors">
-                Book Now
-              </button>
-            </div>
-          </div>
-        </motion.div>
+        <BookingWidget />
 
         {/* Scroll hint */}
         <motion.div
