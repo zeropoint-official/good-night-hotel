@@ -108,9 +108,9 @@ function BookingWidget() {
       animate="visible"
       variants={fade}
       custom={4}
-      className="relative z-10 px-3 md:px-6 pb-10 md:pb-20"
+      className="relative z-10 px-5 md:px-6 pb-10 md:pb-20"
     >
-      <div className="bg-white/80 md:bg-white/90 backdrop-blur-xl rounded-2xl p-3 md:p-5 max-w-2xl mx-auto shadow-xl shadow-black/10 border border-white/20">
+      <div className="bg-white/60 backdrop-blur-2xl rounded-2xl p-4 md:p-5 max-w-2xl mx-auto shadow-lg shadow-black/5 border border-white/30">
         {submitted ? (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -132,46 +132,46 @@ function BookingWidget() {
             </button>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
-            <div className="bg-black/[0.03] rounded-xl p-2.5 md:p-3.5 text-left">
-              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-0.5 md:mb-1">
+          <div className="flex flex-col md:grid md:grid-cols-4 gap-2.5 md:gap-3">
+            <div className="bg-white/50 rounded-xl p-3 md:p-3.5">
+              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/35 block mb-1">
                 Check-in
               </label>
               <input
                 type="date"
                 value={checkIn}
                 onChange={(e) => setCheckIn(e.target.value)}
-                className="w-full bg-transparent text-[#1a1a1a]/80 text-xs md:text-sm outline-none cursor-pointer"
+                className="w-full bg-transparent text-[#1a1a1a]/80 text-sm outline-none cursor-pointer"
               />
             </div>
-            <div className="bg-black/[0.03] rounded-xl p-2.5 md:p-3.5 text-left">
-              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-0.5 md:mb-1">
+            <div className="bg-white/50 rounded-xl p-3 md:p-3.5">
+              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/35 block mb-1">
                 Check-out
               </label>
               <input
                 type="date"
                 value={checkOut}
                 onChange={(e) => setCheckOut(e.target.value)}
-                className="w-full bg-transparent text-[#1a1a1a]/80 text-xs md:text-sm outline-none cursor-pointer"
+                className="w-full bg-transparent text-[#1a1a1a]/80 text-sm outline-none cursor-pointer"
               />
             </div>
-            <div className="bg-black/[0.03] rounded-xl p-2.5 md:p-3.5 text-left">
-              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-0.5 md:mb-1">
+            <div className="bg-white/50 rounded-xl p-3 md:p-3.5">
+              <label className="text-[9px] md:text-[10px] uppercase tracking-wider text-[#1a1a1a]/35 block mb-1">
                 Guests
               </label>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <button
                   onClick={() => setGuests(Math.max(1, guests - 1))}
-                  className="w-6 h-6 rounded-full bg-black/[0.06] text-[#1a1a1a]/60 text-xs flex items-center justify-center hover:bg-black/10 transition-colors"
+                  className="w-7 h-7 rounded-full bg-black/[0.05] text-[#1a1a1a]/60 text-sm flex items-center justify-center hover:bg-black/10 transition-colors"
                 >
                   −
                 </button>
-                <span className="text-[#1a1a1a]/80 text-xs md:text-sm min-w-[1rem] text-center">
+                <span className="text-[#1a1a1a]/80 text-sm min-w-[1.5rem] text-center">
                   {guests}
                 </span>
                 <button
                   onClick={() => setGuests(Math.min(6, guests + 1))}
-                  className="w-6 h-6 rounded-full bg-black/[0.06] text-[#1a1a1a]/60 text-xs flex items-center justify-center hover:bg-black/10 transition-colors"
+                  className="w-7 h-7 rounded-full bg-black/[0.05] text-[#1a1a1a]/60 text-sm flex items-center justify-center hover:bg-black/10 transition-colors"
                 >
                   +
                 </button>
@@ -179,7 +179,7 @@ function BookingWidget() {
             </div>
             <button
               onClick={() => setSubmitted(true)}
-              className="bg-[#1a1a1a] text-white font-medium rounded-xl px-4 py-3 md:py-3.5 text-xs md:text-sm hover:bg-[#333] transition-colors col-span-2 md:col-span-1"
+              className="bg-[#1a1a1a] text-white font-medium rounded-xl px-4 py-3.5 text-sm hover:bg-[#333] transition-colors"
             >
               Book Now
             </button>
