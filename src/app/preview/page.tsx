@@ -110,7 +110,7 @@ export default function PreviewPage() {
       {/* ═══════════════════════════════════════════
           Section 1 — Hero
       ═══════════════════════════════════════════ */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
         <Image
           src={HOTEL_IMAGES.hero}
           alt="Good Night Hôtel — exterior view at sunset"
@@ -123,7 +123,7 @@ export default function PreviewPage() {
         <motion.div
           initial="hidden"
           animate="visible"
-          className="relative z-10 text-center px-6 max-w-3xl"
+          className="relative z-10 text-center px-6 max-w-3xl mx-auto flex-1 flex flex-col justify-center pt-20 md:pt-0"
         >
           <motion.p
             variants={fade}
@@ -135,21 +135,21 @@ export default function PreviewPage() {
           <motion.h1
             variants={fade}
             custom={1}
-            className="font-serif text-5xl md:text-7xl font-normal mb-4 leading-tight text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
+            className="font-serif text-4xl md:text-7xl font-normal mb-4 leading-tight text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
           >
             Good Night Hôtel
           </motion.h1>
           <motion.p
             variants={fade}
             custom={2}
-            className="text-lg md:text-xl text-white/80 mb-3 font-light drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]"
+            className="text-base md:text-xl text-white/80 mb-3 font-light drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]"
           >
             Arques, Pas-de-Calais — France
           </motion.p>
           <motion.div
             variants={fade}
             custom={3}
-            className="flex items-center justify-center gap-1 mb-12"
+            className="flex items-center justify-center gap-1 mb-8 md:mb-12"
           >
             {Array.from({ length: 2 }).map((_, i) => (
               <Star
@@ -162,13 +162,17 @@ export default function PreviewPage() {
               762 avis · 6.9 / 10
             </span>
           </motion.div>
+        </motion.div>
 
-          {/* Booking Widget */}
-          <motion.div
-            variants={fade}
-            custom={4}
-            className="bg-white/95 backdrop-blur-lg rounded-2xl p-4 md:p-5 max-w-2xl mx-auto shadow-xl shadow-black/10"
-          >
+        {/* Booking Widget — pinned to bottom of hero */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fade}
+          custom={4}
+          className="relative z-10 px-4 md:px-6 pb-16 md:pb-20"
+        >
+          <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-4 md:p-5 max-w-2xl mx-auto shadow-xl shadow-black/10">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
               <div className="bg-[#f5f5f3] rounded-xl p-3.5 text-left">
                 <label className="text-[10px] uppercase tracking-wider text-[#1a1a1a]/40 block mb-1">
@@ -202,7 +206,7 @@ export default function PreviewPage() {
                 Book Now
               </button>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Scroll hint */}
@@ -210,7 +214,7 @@ export default function PreviewPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden md:block"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}

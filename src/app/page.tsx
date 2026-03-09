@@ -532,69 +532,60 @@ export default function ProposalPage() {
             management, and optimisation are included in our fee.
           </p>
 
-          <div className="overflow-hidden rounded-lg border border-neutral-200 text-sm mb-6">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-neutral-50 text-left">
-                  <th className="px-5 py-3 font-medium text-neutral-500 text-xs uppercase tracking-wider">
-                    Month
-                  </th>
-                  <th className="px-5 py-3 font-medium text-neutral-500 text-xs uppercase tracking-wider">
-                    Platforms
-                  </th>
-                  <th className="px-5 py-3 font-medium text-neutral-500 text-xs uppercase tracking-wider">
-                    Recommended Budget
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-neutral-100">
-                <tr>
-                  <td className="px-5 py-3 text-neutral-800 font-medium">
-                    Month 1
-                  </td>
-                  <td className="px-5 py-3 text-neutral-600">
-                    Google Search Ads
-                  </td>
-                  <td className="px-5 py-3 text-neutral-600">
-                    €250/month
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-5 py-3 text-neutral-800 font-medium">
-                    Month 2
-                  </td>
-                  <td className="px-5 py-3 text-neutral-600">
-                    Google Search + Google Maps/Local
-                    <br />
-                    <span className="text-neutral-400">
-                      + Meta Ads (optional test)
-                    </span>
-                  </td>
-                  <td className="px-5 py-3 text-neutral-600">
-                    €300–400/month
-                    <br />
-                    <span className="text-neutral-400">
-                      + €100–150 Meta (optional)
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-5 py-3 text-neutral-800 font-medium">
-                    Month 3
-                  </td>
-                  <td className="px-5 py-3 text-neutral-600">
-                    Best-performing channels + Retargeting
-                  </td>
-                  <td className="px-5 py-3 text-neutral-600">
-                    €400–500/month
-                    <br />
-                    <span className="text-neutral-400">
-                      (scaled only if results justify it)
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="space-y-3 mb-6">
+            {[
+              {
+                month: "Month 1",
+                platforms: "Google Search Ads",
+                budget: "€250/month",
+              },
+              {
+                month: "Month 2",
+                platforms: "Google Search + Google Maps/Local",
+                platformsSub: "+ Meta Ads (optional test)",
+                budget: "€300–400/month",
+                budgetSub: "+ €100–150 Meta (optional)",
+              },
+              {
+                month: "Month 3",
+                platforms: "Best-performing channels + Retargeting",
+                budget: "€400–500/month",
+                budgetSub: "Scaled only if results justify it",
+              },
+            ].map((row) => (
+              <div
+                key={row.month}
+                className="rounded-lg border border-neutral-200 p-4 text-sm"
+              >
+                <p className="font-medium text-neutral-800 mb-2">
+                  {row.month}
+                </p>
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                  <div className="text-neutral-600">
+                    {row.platforms}
+                    {row.platformsSub && (
+                      <>
+                        <br />
+                        <span className="text-neutral-400 text-xs">
+                          {row.platformsSub}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                  <div className="text-neutral-800 font-medium sm:text-right shrink-0">
+                    {row.budget}
+                    {row.budgetSub && (
+                      <>
+                        <br />
+                        <span className="text-neutral-400 font-normal text-xs">
+                          {row.budgetSub}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="p-4 bg-neutral-50 rounded-lg text-xs text-neutral-500 leading-relaxed">
